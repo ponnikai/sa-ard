@@ -1,82 +1,127 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ---------- Sticky navbar shadow ----------
   const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ---------- Mobile menu ----------
   const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('main section[id]');
-  const selectButtons = document.querySelectorAll('.btn-select-product');
-  const formulaSelect = document.getElementById('selectedFormula');
-  const quickOrderForm = document.getElementById('quickOrderForm');
-  const orderStatus = document.getElementById('orderStatus');
+  const navLinks = document.getElementById('navLinks');
 
-  // Toggle mobile navigation drawer
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-    });
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.classList.toggle('active', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
 
-    navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // Sticky navbar elevation & active section link state
-  const handleScroll = () => {
-    if (navbar) {
-      navbar.classList.toggle('scrolled', window.scrollY > 12);
-    }
-
-    const scrollPosition = window.scrollY + 140;
-    sections.forEach((section) => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        navLinks.forEach((link) => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-        });
-      }
-    });
-  };
-
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
-
-  // Select product formula and scroll smoothly to promotion order box
-  selectButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const formulaName = button.getAttribute('data-formula') || '';
-      if (formulaSelect) {
-        const matchedOption = Array.from(formulaSelect.options).find((opt) =>
-          opt.value.includes(formulaName.split(' ')[0])
-        );
-        if (matchedOption) {
-          formulaSelect.value = matchedOption.value;
-        }
-      }
-
-      if (orderStatus) {
-        orderStatus.textContent = `เลือก "${formulaName}" พร้อมรับส่วนลด 30% สำหรับลูกค้าใหม่แล้ว`;
-      }
-
-      const promoSection = document.getElementById('promotion');
-      if (promoSection) {
-        promoSection.scrollIntoView({ behavior: 'smooth' });
-      }
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
 
-  // Handle promotion order submission feedback
-  if (quickOrderForm && orderStatus && formulaSelect) {
-    quickOrderForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const chosenFormula = formulaSelect.value;
-      orderStatus.textContent = `รับสิทธิ์โปรโมชั่นสำหรับ "${chosenFormula}" เรียบร้อยแล้ว ขอบคุณที่ไว้วางใจ สะอาด (SA-ARD)`;
-    });
+  // ---------- Toast notification ----------
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
   }
+
+  // ---------- Cart ----------
+  const cartCount = document.getElementById('cartCount');
+  const cartBtn = document.getElementById('cartBtn');
+  let cartItems = 0;
+
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      cartItems++;
+      cartCount.textContent = cartItems;
+      cartCount.animate(
+        [{ transform: 'scale(1.5)' }, { transform: 'scale(1)' }],
+        { duration: 300, easing: 'ease-out' }
+      );
+
+      const original = btn.textContent;
+      btn.textContent = 'เพิ่มแล้ว ✓';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('added');
+      }, 1200);
+
+      showToast(`เพิ่ม "${btn.dataset.name}" ลงตะกร้าแล้ว`);
+    });
+  });
+
+  cartBtn.addEventListener('click', () => {
+    showToast(cartItems > 0
+      ? `ตะกร้ามี ${cartItems} รายการ`
+      : 'ตะกร้าของคุณยังว่างอยู่');
+  });
+
+  // ---------- Copy promo code ----------
+  const copyBtn = document.getElementById('copyCode');
+  copyBtn.addEventListener('click', () => {
+    const code = 'SAARD30';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code)
+        .then(() => showToast('คัดลอกโค้ดแล้ว'))
+        .catch(() => showToast('ไม่สามารถคัดลอกได้'));
+    } else {
+      showToast(`โค้ดของคุณคือ ${code}`);
+    }
+  });
+
+  // ---------- Countdown (ตั้งเวลาสิ้นสุดโปรโมชั่น 7 วันนับจากเข้าชมครั้งแรก) ----------
+  const STORAGE_KEY = 'saard_promo_end';
+  let endTime = Number(localStorage.getItem(STORAGE_KEY));
+  if (!endTime || endTime < Date.now()) {
+    endTime = Date.now() + 7 * 24 * 60 * 60 * 1000;
+    localStorage.setItem(STORAGE_KEY, endTime);
+  }
+
+  const pad = n => String(n).padStart(2, '0');
+  function updateCountdown() {
+    const diff = Math.max(0, endTime - Date.now());
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('cd-days').textContent = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent = pad(mins);
+    document.getElementById('cd-secs').textContent = pad(secs);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // ---------- Close mobile menu on resize to desktop ----------
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navLinks.classList.remove('open');
+      menuToggle.classList.remove('active');
+    }
+  });
 });

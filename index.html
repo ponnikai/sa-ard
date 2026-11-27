@@ -1,275 +1,283 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>สะอาด (SA-ARD) | ครีมอาบน้ำสารสกัดธรรมชาติ 100%</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สะอาด (SA-ARD) | โลชั่นอาบน้ำจากธรรมชาติ</title>
+  <meta name="description" content="สะอาด SA-ARD โลชั่นอาบน้ำจากธรรมชาติ สะอาด สดชื่น ผิวสุขภาพดี">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Sticky Navbar -->
+
+  <!-- 1. Header / Sticky Navbar -->
   <header class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#hero" class="brand-logo" aria-label="สะอาด หน้าแรก">
-        <img src="images/logo.png" alt="โลโก้แบรนด์ สะอาด" />
-        <span class="brand-name">สะอาด <span>SA-ARD</span></span>
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">
+        <img src="images/logo.png" alt="โลโก้ สะอาด SA-ARD">
       </a>
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="เปิดหรือปิดเมนูนำทาง"
-        aria-expanded="false"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav-menu" id="navMenu">
-        <a href="#highlights" class="nav-link">จุดเด่น</a>
-        <a href="#products" class="nav-link">สูตรสินค้า</a>
-        <a href="#promotion" class="nav-link">โปรโมชั่น</a>
-        <a href="#promotion" class="btn btn-primary nav-cta">สั่งซื้อโปรนี้</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#products">สินค้า</a>
+        <a href="#ingredients">ส่วนผสม</a>
+        <a href="#promotion">โปรโมชั่น</a>
+        <a href="#about">เกี่ยวกับเรา</a>
+        <a href="#faq">คำถามที่พบบ่อย</a>
       </nav>
+
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn" aria-label="ตะกร้าสินค้า">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section
-      class="hero"
-      id="hero"
-      style="--hero-bg: url('images/banner.jpg');"
-    >
-      <div class="hero-overlay"></div>
+
+    <!-- 2. Hero -->
+    <section class="hero" id="hero" style="background-image: url('images/banner.jpg');">
       <div class="container hero-content">
-        <span class="hero-badge">NATURAL HEALTHY BODY WASH · 450ML</span>
-        <h1 class="hero-title">สะอาด สดชื่น ผิวสุขภาพดี</h1>
-        <p class="hero-subtitle">
-          ครีมอาบน้ำสารสกัดธรรมชาติ 100% ผสานพลังจากชาเขียว ว่านหางจระเข้ และน้ำผึ้ง
-          อ่อนโยน ไม่ทำร้ายผิว คงความชุ่มชื้นสบายตัวทุกวัน
+        <h1 class="hero-title">
+          สะอาด สดชื่น<br>
+          <span>ผิวสุขภาพดี</span>
+        </h1>
+        <p class="hero-sub">โลชั่นอาบน้ำจากธรรมชาติ อ่อนโยนต่อผิวทุกวัน</p>
+        <a href="#products" class="btn btn-primary btn-lg">ดูสินค้า</a>
+      </div>
+    </section>
+
+    <!-- 3. Benefits -->
+    <section class="section benefits" id="benefits">
+      <div class="container">
+        <h2 class="section-title">ทำไมต้อง สะอาด</h2>
+        <p class="section-sub">ผลิตภัณฑ์จากธรรมชาติ ดูแลผิวให้สะอาดและชุ่มชื้น</p>
+
+        <div class="benefit-grid">
+          <div class="benefit-card reveal">
+            <img src="images/icon-01.png" alt="ไอคอนใบไม้">
+            <h3>ผลิตภัณฑ์จากธรรมชาติ</h3>
+            <p>คัดสรรส่วนผสมจากพืชที่ให้ความรู้สึกสดชื่น</p>
+          </div>
+          <div class="benefit-card reveal">
+            <img src="images/icon-02.png" alt="ไอคอนโล่ประกาย">
+            <h3>ปลอดภัยและอ่อนโยน</h3>
+            <p>สูตรอ่อนโยน เหมาะกับการใช้ในชีวิตประจำวัน</p>
+          </div>
+          <div class="benefit-card reveal">
+            <img src="images/icon-03.png" alt="ไอคอนหยดน้ำ">
+            <h3>ให้ความชุ่มชื้น</h3>
+            <p>ช่วยให้ผิวรู้สึกนุ่มและชุ่มชื้นหลังอาบน้ำ</p>
+          </div>
+          <div class="benefit-card reveal">
+            <img src="images/icon-04.png" alt="ไอคอนกระต่ายในหัวใจ">
+            <h3>ใส่ใจผิวทุกคน</h3>
+            <p>ออกแบบเพื่อดูแลผิวของคุณและคนในครอบครัว</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Product Showcase -->
+    <section class="section products" id="products">
+      <div class="container">
+        <h2 class="section-title">สินค้าของเรา</h2>
+        <p class="section-sub">เลือกสูตรที่เหมาะกับคุณ ขนาด 450 ml</p>
+
+        <div class="product-grid">
+          <article class="product-card reveal">
+            <div class="product-img">
+              <img src="images/product-01.jpg" alt="สะอาด สูตรต้นฉบับ">
+            </div>
+            <div class="product-body">
+              <h3>สูตรต้นฉบับ</h3>
+              <p class="product-size">Natural Healthy Body Wash · 450 ml</p>
+              <div class="product-footer">
+                <span class="price">฿<span data-price>199</span></span>
+                <button class="btn btn-primary add-to-cart" data-name="สูตรต้นฉบับ" data-price="199">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-img">
+              <img src="images/product-02.jpg" alt="สะอาด สูตรว่านหางจระเข้">
+            </div>
+            <div class="product-body">
+              <h3>สูตรว่านหางจระเข้</h3>
+              <p class="product-size">Aloe Vera Formula · 450 ml</p>
+              <div class="product-footer">
+                <span class="price">฿<span data-price>219</span></span>
+                <button class="btn btn-primary add-to-cart" data-name="สูตรว่านหางจระเข้" data-price="219">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-img">
+              <img src="images/product-03.jpg" alt="สะอาด สูตรน้ำผึ้ง">
+              <span class="badge-honey">น้ำผึ้ง</span>
+            </div>
+            <div class="product-body">
+              <h3>สูตรน้ำผึ้ง</h3>
+              <p class="product-size">Honey Formula · 450 ml</p>
+              <div class="product-footer">
+                <span class="price">฿<span data-price>219</span></span>
+                <button class="btn btn-primary add-to-cart" data-name="สูตรน้ำผึ้ง" data-price="219">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Promotion -->
+    <section class="section promotion" id="promotion">
+      <div class="container promo-wrap">
+        <div class="promo-text reveal">
+          <span class="promo-tag">ข้อเสนอพิเศษ</span>
+          <h2>ลดพิเศษ 30%</h2>
+          <p class="promo-sub">สำหรับลูกค้าใหม่</p>
+
+          <div class="countdown" id="countdown">
+            <div><span id="cd-days">00</span><small>วัน</small></div>
+            <div><span id="cd-hours">00</span><small>ชั่วโมง</small></div>
+            <div><span id="cd-mins">00</span><small>นาที</small></div>
+            <div><span id="cd-secs">00</span><small>วินาที</small></div>
+          </div>
+
+          <div class="promo-code">
+            โค้ด: <strong>SAARD30</strong>
+            <button class="copy-btn" id="copyCode">คัดลอก</button>
+          </div>
+
+          <a href="#products" class="btn btn-primary btn-lg">สั่งซื้อโปรนี้</a>
+        </div>
+        <div class="promo-img reveal">
+          <img src="images/promotion.jpg" alt="โปรโมชั่นลดพิเศษ 30% สำหรับลูกค้าใหม่">
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Ingredient Story -->
+    <section class="section ingredients" id="ingredients">
+      <div class="container split">
+        <div class="split-img reveal">
+          <img src="images/product-02.jpg" alt="สะอาด กับส่วนผสมจากธรรมชาติ">
+        </div>
+        <div class="split-text reveal">
+          <img class="small-icon" src="images/icon-01.png" alt="ไอคอนใบไม้">
+          <h2 class="section-title left">ส่วนผสมจากธรรมชาติ</h2>
+          <p>ทุกสูตรเริ่มต้นจากวัตถุดิบที่เราคัดเลือกมาอย่างตั้งใจ</p>
+          <ul class="ingredient-list">
+            <li><span>🌿</span> ยูคาลิปตัส ให้ความรู้สึกสดชื่น</li>
+            <li><span>🌿</span> เฟิร์น ช่วยให้ผิวสงบ</li>
+            <li><span>🌿</span> ว่านหางจระเข้ ให้ความชุ่มชื้น</li>
+            <li><span>🍯</span> น้ำผึ้ง ช่วยให้ผิวนุ่มนวล</li>
+          </ul>
+          <a href="#products" class="btn btn-outline">อ่านเพิ่มเติม</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section class="section trust" id="trust">
+      <div class="container">
+        <h2 class="section-title">ลูกค้าไว้วางใจ</h2>
+        <div class="stat-grid">
+          <div class="stat reveal"><strong>[จำนวนลูกค้า]</strong><span>ลูกค้าที่ไว้วางใจ</span></div>
+          <div class="stat reveal"><strong>[จำนวนรีวิว]</strong><span>รีวิวจากลูกค้าจริง</span></div>
+          <div class="stat reveal"><strong>[คะแนนเฉลี่ย]</strong><span>คะแนนความพึงพอใจ</span></div>
+        </div>
+
+        <div class="review-grid">
+          <blockquote class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>"[ใส่ข้อความรีวิวจริงของลูกค้า]"</p>
+            <cite>— [ชื่อลูกค้า]</cite>
+          </blockquote>
+          <blockquote class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>"[ใส่ข้อความรีวิวจริงของลูกค้า]"</p>
+            <cite>— [ชื่อลูกค้า]</cite>
+          </blockquote>
+          <blockquote class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>"[ใส่ข้อความรีวิวจริงของลูกค้า]"</p>
+            <cite>— [ชื่อลูกค้า]</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. About -->
+    <section class="section about" id="about">
+      <div class="container about-wrap reveal">
+        <img class="about-logo" src="images/logo.png" alt="โลโก้ สะอาด">
+        <h2 class="section-title">เกี่ยวกับ สะอาด</h2>
+        <p>
+          สะอาด (SA-ARD) เกิดจากความตั้งใจที่อยากให้ทุกคนได้อาบน้ำอย่างสบายใจ
+          เราเลือกใช้ส่วนผสมจากธรรมชาติ เพื่อดูแลผิวให้สะอาด สดชื่น และมีสุขภาพดีในทุกวัน
         </p>
-        <div class="hero-actions">
-          <a href="#products" class="btn btn-secondary">ดูสินค้า</a>
-          <a href="#promotion" class="btn btn-primary">ลดพิเศษ 30% ลูกค้าใหม่</a>
-        </div>
+        <img class="about-bunny" src="images/icon-04.png" alt="ไอคอนกระต่ายในหัวใจ">
       </div>
     </section>
 
-    <!-- Brand Highlights Section -->
-    <section class="section highlights-section" id="highlights">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">WHY SA-ARD</span>
-          <h2 class="section-title">ดูแลผิวอย่างอ่อนโยนในทุกวัน</h2>
-          <p class="section-desc">
-            คัดสรรคุณค่าจากธรรมชาติ 100% ล้างสิ่งสกปรกได้สะอาดโดยไม่ชะล้างน้ำมันธรรมชาติบนผิว
-            ตอบโจทย์สายรักสุขภาพและใส่ใจสิ่งแวดล้อม
-          </p>
-        </div>
-
-        <div class="highlights-grid">
-          <article class="highlight-card">
-            <div class="icon-box">
-              <img src="images/icon-01.png" alt="ไอคอนใบไม้และสารสกัดธรรมชาติ" />
-            </div>
-            <h3 class="highlight-title">สารสกัดธรรมชาติ 100%</h3>
-            <p class="highlight-text">
-              ผสานพลังจากชาเขียว ว่านหางจระเข้ และน้ำผึ้ง เพื่อดูแลผิวอย่างสดชื่น
-              นุ่มลื่น และผ่อนคลายทุกครั้งที่อาบน้ำ
-            </p>
-          </article>
-
-          <article class="highlight-card">
-            <div class="icon-box">
-              <img src="images/icon-02.png" alt="ไอคอนโล่ปกป้องและใบไม้" />
-            </div>
-            <h3 class="highlight-title">อ่อนโยน ไม่ทำร้ายผิว</h3>
-            <p class="highlight-text">
-              ทำความสะอาดผิวอย่างหมดจดโดยไม่ชะล้างน้ำมันธรรมชาติบนผิว
-              ช่วยให้ผิวชุ่มชื้น ไม่แห้งตึงหลังอาบน้ำ
-            </p>
-          </article>
-
-          <article class="highlight-card">
-            <div class="icon-box">
-              <img src="images/icon-03.png" alt="ไอคอนหยดน้ำแห่งความชุ่มชื้น" />
-            </div>
-            <h3 class="highlight-title">เติมความชุ่มชื้นและรักษ์โลก</h3>
-            <p class="highlight-text">
-              เติมความนุ่มลื่นให้ผิวรู้สึกสบายตัวทุกวัน พร้อมแนวคิดรักษ์โลกและอ่อนโยนต่อทุกชีวิต
-            </p>
-          </article>
-        </div>
+    <!-- 9. FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container narrow">
+        <h2 class="section-title">คำถามที่พบบ่อย</h2>
+        <details class="faq-item reveal">
+          <summary>ควรใช้สะอาดอย่างไร?</summary>
+          <p>ใช้โลชั่นอาบน้ำในปริมาณที่เหมาะสม ถูให้เกิดฟอง แล้วล้างออกด้วยน้ำสะอาด</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>มีส่วนผสมอะไรบ้าง?</summary>
+          <p>[ระบุส่วนผสมจริงของแต่ละสูตร เช่น ยูคาลิปตัส เฟิร์น ว่านหางจระเข้ น้ำผึ้ง]</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>จัดส่งกี่วัน?</summary>
+          <p>[ระบุระยะเวลาและค่าจัดส่งจริง]</p>
+        </details>
       </div>
     </section>
 
-    <!-- Product Showcase Section -->
-    <section class="section products-section" id="products">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">OUR FORMULAS</span>
-          <h2 class="section-title">เลือกสูตรที่ใช่สำหรับผิวคุณ</h2>
-          <p class="section-desc">
-            ครีมอาบน้ำขนาด 450ml สูตรธรรมชาติที่ออกแบบมาเพื่อการดูแลผิวที่แตกต่างกันอย่างลงตัว
-          </p>
-        </div>
-
-        <div class="products-grid">
-          <article class="product-card" data-product="สูตรชาเขียวสดชื่น (450ml)">
-            <div class="product-image-wrap">
-              <img
-                src="images/product-01.jpg"
-                alt="ครีมอาบน้ำ สะอาด สูตรชาเขียวสดชื่น ขนาด 450ml"
-              />
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="product-tag">GREEN TEA FORMULA</span>
-                <span class="product-size">450ml</span>
-              </div>
-              <h3 class="product-title">สะอาด ครีมอาบน้ำ สูตรชาเขียว</h3>
-              <p class="product-desc">
-                มอบความรู้สึกสะอาด สดชื่น คืนความสมดุลให้ผิวดูมีชีวิตชีวา
-                พร้อมคงความนุ่มชุ่มชื้นไม่แห้งตึงหลังล้างออก
-              </p>
-              <div class="product-footer">
-                <span class="product-price">ราคา 259 บาท</span>
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-select-product"
-                  data-formula="สูตรชาเขียว (450ml)"
-                >
-                  เลือกสูตรนี้
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-product="สูตรว่านหางจระเข้ชุ่มชื้น (450ml)">
-            <div class="product-image-wrap">
-              <img
-                src="images/product-02.jpg"
-                alt="ครีมอาบน้ำ สะอาด สูตรว่านหางจระเข้ ขนาด 450ml"
-              />
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="product-tag">ALOE VERA FORMULA</span>
-                <span class="product-size">450ml</span>
-              </div>
-              <h3 class="product-title">สะอาด ครีมอาบน้ำ สูตรว่านหางจระเข้</h3>
-              <p class="product-desc">
-                เติมความชุ่มชื้นและปลอบประโลมผิวอย่างอ่อนโยน ล้างสิ่งสกปรกได้สะอาด
-                ให้ผิวนุ่มลื่น สบายตัวตลอดวัน
-              </p>
-              <div class="product-footer">
-                <span class="product-price">ราคา 259 บาท</span>
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-select-product"
-                  data-formula="สูตรว่านหางจระเข้ (450ml)"
-                >
-                  เลือกสูตรนี้
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Accent Highlight Card for Honey Formula -->
-          <article class="product-card product-card--honey" data-product="สูตรน้ำผึ้งบำรุงผิวนุ่ม (450ml)">
-            <div class="product-image-wrap">
-              <img
-                src="images/product-03.jpg"
-                alt="ครีมอาบน้ำ สะอาด สูตรน้ำผึ้งบำรุงผิวนุ่ม"
-              />
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="product-tag product-tag--honey">HONEY FORMULA</span>
-                <span class="product-size">450ml</span>
-              </div>
-              <h3 class="product-title">สะอาด ครีมอาบน้ำ สูตรน้ำผึ้ง</h3>
-              <p class="product-desc">
-                ผสานคุณค่าน้ำผึ้งธรรมชาติช่วยบำรุงให้ผิวนุ่มลื่น ชุ่มชื้นละมุน
-                ไม่แห้งตึง ถนอมปราการผิวตามธรรมชาติ
-              </p>
-              <div class="product-footer">
-                <span class="product-price product-price--honey">ราคา 259 บาท</span>
-                <button
-                  type="button"
-                  class="btn btn-honey btn-select-product"
-                  data-formula="สูตรน้ำผึ้ง (450ml)"
-                >
-                  เลือกสูตรน้ำผึ้ง
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Promotion Section -->
-    <section class="section promo-section" id="promotion">
-      <div class="container">
-        <div class="promo-card">
-          <div class="promo-media">
-            <img
-              src="images/promotion.jpg"
-              alt="โปรโมชั่นลดพิเศษ 30% สำหรับลูกค้าใหม่ แบรนด์ สะอาด"
-            />
-          </div>
-
-          <div class="promo-content">
-            <span class="promo-badge">NEW CUSTOMER OFFER</span>
-            <h2 class="promo-title">ลดพิเศษ 30% สำหรับลูกค้าใหม่</h2>
-            <p class="promo-text">
-              เริ่มต้นดูแลผิวให้สะอาด สดชื่น และนุ่มชุ่มชื้นทุกวันด้วยครีมอาบน้ำสารสกัดธรรมชาติ 100%
-              จาก <strong>สะอาด (SA-ARD)</strong> อ่อนโยนต่อผิวและเป็นมิตรต่อสิ่งแวดล้อม
-            </p>
-
-            <form class="order-box" id="quickOrderForm">
-              <label for="selectedFormula" class="order-label">สูตรที่เลือกสั่งซื้อ</label>
-              <select id="selectedFormula" name="formula" class="order-select">
-                <option value="สูตรชาเขียว (450ml) - ลด 30%">สูตรชาเขียว (450ml) - ลด 30%</option>
-                <option value="สูตรว่านหางจระเข้ (450ml) - ลด 30%">สูตรว่านหางจระเข้ (450ml) - ลด 30%</option>
-                <option value="สูตรน้ำผึ้ง (450ml) - ลด 30%">สูตรน้ำผึ้ง (450ml) - ลด 30%</option>
-              </select>
-
-              <button type="submit" class="btn btn-primary btn-full" id="promoCtaBtn">
-                สั่งซื้อโปรนี้
-              </button>
-              <p class="order-status" id="orderStatus" role="status" aria-live="polite"></p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- Footer -->
+  <!-- 10. Footer -->
   <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-brand">
-        <img src="images/logo.png" alt="โลโก้ สะอาด SA-ARD" />
-        <div>
-          <p class="footer-title">สะอาด (SA-ARD)</p>
-          <p class="footer-note">
-            สารสกัดธรรมชาติ 100% อ่อนโยน ไม่ทำร้ายผิว รักษ์โลกและอ่อนโยนต่อทุกชีวิต
-          </p>
-        </div>
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="โลโก้ สะอาด SA-ARD">
       </div>
-      <p class="footer-copy">© 2026 สะอาด (SA-ARD). All rights reserved.</p>
+      <div class="footer-contact">
+        <h4>ติดต่อเรา</h4>
+        <p>Line: [@ไอดีไลน์]</p>
+        <p>โทร: [เบอร์โทร]</p>
+        <p>อีเมล: [อีเมล]</p>
+      </div>
+      <div class="footer-social">
+        <h4>ติดตามเรา</h4>
+        <a href="#" class="social-link">Line</a>
+        <a href="#" class="social-link">Facebook</a>
+        <a href="#" class="social-link">Instagram</a>
+      </div>
     </div>
+    <p class="copyright">© 2026 สะอาด (SA-ARD) สงวนลิขสิทธิ์</p>
   </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
   <script src="script.js"></script>
 </body>
